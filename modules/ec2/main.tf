@@ -1,3 +1,4 @@
+# Allows HTTP (port 80) access from anywhere and SSH (port 22) access from a specific IP.
 resource "aws_security_group" "ec2_sg" {
   name        = "ec2-sg"
   description = "Allow HTTP and SSH access"
@@ -25,6 +26,7 @@ resource "aws_security_group" "ec2_sg" {
   }
 }
 
+# Launches an EC2 instance using the specified AMI, instance type, and user data script.
 resource "aws_instance" "web" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
@@ -42,6 +44,7 @@ resource "aws_instance" "web" {
   }
 }
 
+# Define an AWS Launch Template resource
 resource "aws_launch_template" "web" {
   name                   = "web-launch-template"
   image_id               = var.ami_id
