@@ -45,7 +45,7 @@ This project provisions a secure, highly available AWS environment using Terrafo
      systemctl start httpd
      systemctl enable httpd
      PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
-     echo "<html><h1>Hello, World!</h1><p>Public IP: $PUBLIC_IP</p></html>" > /var/www/html/index.html
+     echo "<html>Hello, World!</html>" /var/www/html/index.html
    EOF
 
 3. **Initialize Terraform**
