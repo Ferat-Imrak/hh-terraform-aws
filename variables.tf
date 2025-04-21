@@ -1,9 +1,11 @@
+# Define the AWS region where resources will be deployed
 variable "aws_region" {
   description = "The AWS region to deploy the resources"
   type        = string
-  default     = "us-east-1"
+  default     = "us-east-1" # Default region is set to us-east-1
 }
 
+# Define the user data script to configure EC2 instances
 variable "user_data" {
   description = "User data script to run on EC2 instance"
   type        = string
@@ -44,16 +46,4 @@ variable "public_subnet_cidr" {
   description = "CIDR block for the public subnets"
   type        = string
   default     = "10.0.0.0/24"
-}
-
-variable "db_username" {
-  description = "RDS username"
-  type        = string
-  sensitive   = true
-}
-
-variable "db_password" {
-  description = "RDS password"
-  type        = string
-  sensitive   = true
 }

@@ -1,8 +1,10 @@
+# Create a CloudWatch Log Group to store logs
 resource "aws_cloudwatch_log_group" "logs" {
-  name              = "/aws/ecs/monitoring"
+  name              = "/aws/monitoring"
   retention_in_days = 14
 }
 
+# Define an S3 bucket policy for CloudTrail to write logs to the S3 bucket
 resource "aws_s3_bucket_policy" "cloudtrail_policy" {
   bucket = var.bucket_name
 
@@ -32,6 +34,7 @@ resource "aws_s3_bucket_policy" "cloudtrail_policy" {
   })
 }
 
+# Create a CloudTrail to log API activity and events
 resource "aws_cloudtrail" "trail" {
   name                          = "cloudtrail-log"
   s3_bucket_name                = var.bucket_name
